@@ -1,5 +1,7 @@
 package co.edu.poli.contexto3.servicios;
 
+import co.edu.poli.contexto3.modelo.*;
+
 public class Quimico extends Cientifico {
 
     private String especializacion;
@@ -9,8 +11,8 @@ public class Quimico extends Cientifico {
     public Quimico() {
     }
 
-    public Quimico(String nombre, String id) {
-        super(nombre, id);
+    public Quimico(String nombre, String id, String sexo) {
+        super(nombre, id, sexo);
     }
 
     public String getEspecializacion() {
@@ -48,5 +50,9 @@ public class Quimico extends Cientifico {
                 ", sexo='" + sexo + '\'' +
                 ", uniforme='" + uniforme + '\'' +
                 '}';
+    }
+
+    public int operacion(int i) {
+        return i * 5;
     }
 }

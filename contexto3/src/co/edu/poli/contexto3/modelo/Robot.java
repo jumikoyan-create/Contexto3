@@ -1,6 +1,6 @@
 package co.edu.poli.contexto3.modelo;
 
-public class Robot {
+public final class Robot {
 
     private String id;
     private String modelo;

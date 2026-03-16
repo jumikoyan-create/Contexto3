@@ -8,7 +8,7 @@ public class Cientifico extends Persona {
     public Cientifico() {
     }
 
-    public Cientifico(String nombre, String id) {
+    public Cientifico(String nombre, String id, String sexo) {
         super(nombre, id);
     }
 
@@ -34,5 +34,9 @@ public class Cientifico extends Persona {
                 "experiencia='" + experiencia + '\'' +
                 ", sueldo=" + sueldo +
                 '}';
+    }
+
+    public int operacion(int i) {
+        return i * 2;
     }
 }

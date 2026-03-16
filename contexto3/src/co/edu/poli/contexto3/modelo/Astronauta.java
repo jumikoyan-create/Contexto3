@@ -7,7 +7,7 @@ public class Astronauta extends Persona {
     public Astronauta() {
     }
 
-    public Astronauta(String nombre, String id) {
+    public Astronauta(String nombre, String id, String sexo) {
         super(nombre, id);
     }
 

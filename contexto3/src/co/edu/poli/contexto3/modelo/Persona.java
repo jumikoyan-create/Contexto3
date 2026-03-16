@@ -3,7 +3,7 @@ package co.edu.poli.contexto3.modelo;
 public class Persona {
 
     private String nombre;
-    private String id;
+    private final String id;
     private double peso;
     private String especialidad;
     private String empresa;
@@ -12,11 +12,16 @@ public class Persona {
     private String fechanacimiento;
 
     public Persona() {
+        this.id = "";
     }
 
     public Persona(String nombre, String id) {
         this.nombre = nombre;
         this.id = id;
+    }
+
+    public final void mostrarTipo() {
+        System.out.println("Soy una persona del sistema");
     }
 
     public String getNombre() {
@@ -29,10 +34,6 @@ public class Persona {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public double getPeso() {
@@ -89,5 +90,9 @@ public class Persona {
                 "nombre='" + nombre + '\'' +
                 ", id='" + id + '\'' +
                 '}';
+    }
+
+    public int operacion(int i) {
+        return i;
     }
 }
