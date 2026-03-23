@@ -54,8 +54,6 @@ public class Principal {
         Persona nueva = crearPersona();
         System.out.println("Persona creada; " + nueva);
  
-
-        System.out.println("\n------ PRUEBA CRUD ------");
 System.out.println("\n------ PRUEBA CRUD ------");
 
 ImplementacionOperacionCRUD crud = new ImplementacionOperacionCRUD();

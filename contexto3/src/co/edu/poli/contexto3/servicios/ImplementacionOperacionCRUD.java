@@ -2,9 +2,9 @@ package co.edu.poli.contexto3.servicios;
 import co.edu.poli.contexto3.modelo.Persona;
 public class ImplementacionOperacionCRUD implements OperacionCRUD {
 
-    private Persona[] personas = new Persona[2];
+    private Persona[] personaa = new Persona[2];
 
-    // CREAR (inserta en primer null, si no hay espacio CRECE el arreglo)
+    
     @Override
     public void crear(Persona p) {
 
@@ -12,41 +12,36 @@ public class ImplementacionOperacionCRUD implements OperacionCRUD {
             System.out.println("No se puede agregar un objeto null");
             return;
         }
-
-        // evitar duplicados por ID
         if (leer(p.getId()) != null) {
             System.out.println("Ya existe una persona con ese ID");
             return;
         }
 
-        for (int i = 0; i < personas.length; i++) {
-            if (personas[i] == null) {
-                personas[i] = p;
+        for (int i = 0; i < personaa.length; i++) {
+            if (personaa[i] == null) {
+                personaa[i] = p;
                 System.out.println("Persona agregada en posición " + i);
                 return;
             }
         }
+        Persona[] nuevo = new Persona[personaa.length + 1];
 
-        // Si no hay espacio → crecer arreglo (agregación infinita)
-        Persona[] nuevo = new Persona[personas.length + 1];
-
-        for (int i = 0; i < personas.length; i++) {
-            nuevo[i] = personas[i];
+        for (int i = 0; i < personaa.length; i++) {
+            nuevo[i] = personaa[i];
         }
 
-        nuevo[personas.length] = p;
-        personas = nuevo;
+        nuevo[personaa.length] = p;
+        personaa = nuevo;
 
-        System.out.println("Arreglo expandido. Persona agregada en posición " + (personas.length - 1));
+        System.out.println("Arreglo expandido. Persona agregada en posición " + (personaa.length - 1));
     }
 
-    // LEER por ID
     @Override
     public Persona leer(String id) {
 
         if (id == null) return null;
 
-        for (Persona p : personas) {
+        for (Persona p : personaa) {
             if (p != null && p.getId().equals(id)) {
                 return p;
             }
@@ -55,13 +50,12 @@ public class ImplementacionOperacionCRUD implements OperacionCRUD {
         return null;
     }
 
-    // ACTUALIZAR por ID
     @Override
     public void actualizar(String id, Persona nueva) {
 
-        for (int i = 0; i < personas.length; i++) {
-            if (personas[i] != null && personas[i].getId().equals(id)) {
-                personas[i] = nueva;
+        for (int i = 0; i < personaa.length; i++) {
+            if (personaa[i] != null && personaa[i].getId().equals(id)) {
+                personaa[i] = nueva;
                 System.out.println("Persona actualizada con ID: " + id);
                 return;
             }
@@ -70,13 +64,12 @@ public class ImplementacionOperacionCRUD implements OperacionCRUD {
         System.out.println("No se encontró persona con ID: " + id);
     }
 
-    // ELIMINAR por ID
     @Override
     public void eliminar(String id) {
 
-        for (int i = 0; i < personas.length; i++) {
-            if (personas[i] != null && personas[i].getId().equals(id)) {
-                personas[i] = null;
+        for (int i = 0; i < personaa.length; i++) {
+            if (personaa[i] != null && personaa[i].getId().equals(id)) {
+                personaa[i] = null;
                 System.out.println("Persona eliminada con ID: " + id);
                 return;
             }
@@ -88,9 +81,9 @@ public class ImplementacionOperacionCRUD implements OperacionCRUD {
     public void listar() {
     System.out.println("\n--- LISTADO DE PERSONAS ---");
 
-    for (int i = 0; i < personas.length; i++) {
-        if (personas[i] != null) {
-            System.out.println("Posición " + i + ": " + personas[i]);
+    for (int i = 0; i < personaa.length; i++) {
+        if (personaa[i] != null) {
+            System.out.println("Posición " + i + ": " + personaa[i]);
         } else {
             System.out.println("Posición " + i + ": vacío");
         }
