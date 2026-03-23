@@ -25,4 +25,14 @@ public class Astronauta extends Persona {
                 "fechadenacimiento='" + fechadenacimiento + '\'' +
                 '}';
     }
+
+    @Override
+    public int sueldoSinPasaje() {
+        int sueldo = 5000000;
+        int pasaje = 180000;
+        int resultado = sueldo - pasaje; 
+        return resultado;
+    }
+
+    
 }

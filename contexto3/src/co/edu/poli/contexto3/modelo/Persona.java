@@ -1,6 +1,6 @@
 package co.edu.poli.contexto3.modelo;
 
-public class Persona {
+public abstract class Persona {
 
     private String nombre;
     private final String id;
@@ -91,8 +91,11 @@ public class Persona {
                 ", id='" + id + '\'' +
                 '}';
     }
+    
 
     public int operacion(int i) {
         return i;
     }
+
+    public abstract int sueldoSinPasaje();
 }

@@ -1,6 +1,7 @@
 package co.edu.poli.contexto3.vista;
 
 import co.edu.poli.contexto3.modelo.*;
+import co.edu.poli.contexto3.servicios.ImplementacionOperacionCRUD;
 import co.edu.poli.contexto3.servicios.Quimico;
 
 public class Principal {
@@ -38,7 +39,7 @@ public class Principal {
         System.out.println("ARREGLO");
         Persona[] personaa = new Persona[5];
         personaa[0] = new Cientifico("carlos", "c01", "F");
-        personaa[1] = new Quimico("ana", "Q01", "F");
+        personaa[1] = new Quimico("ana", "Q02", "F");
         personaa[2] = new Astronauta("Juan", "J01", "F");
         personaa[3] = new Cientifico("Maria", "C03", "F");
         personaa[4] = new Quimico("Luis", "Q01", "M");
@@ -51,19 +52,53 @@ public class Principal {
         }
         mostrarPersona(new Cientifico("Maria", "C03", "f"));
         Persona nueva = crearPersona();
-        System.out.println("Persona creada; " + nueva.toString());
+        System.out.println("Persona creada; " + nueva);
+ 
+
+        System.out.println("\n------ PRUEBA CRUD ------");
+System.out.println("\n------ PRUEBA CRUD ------");
+
+ImplementacionOperacionCRUD crud = new ImplementacionOperacionCRUD();
+
+// CREAR
+crud.crear(new Cientifico("Carlos", "C01", "M"));
+crud.crear(new Quimico("Ana", "Q01", "F"));
+crud.crear(new Cientifico("Maria", "C02", "F")); // crecimiento
+
+// LISTAR
+crud.listar();
+
+// LEER
+System.out.println("Buscar C01: " + crud.leer("C01"));
+
+// ACTUALIZAR
+crud.actualizar("Q01", new Cientifico("Pedro", "Q01", "M"));
+System.out.println("Buscar Q01 actualizado: " + crud.leer("Q01"));
+
+// ELIMINAR
+crud.eliminar("C01");
+System.out.println("Buscar C01 eliminado: " + crud.leer("C01"));
+
+// LISTADO FINAL
+crud.listar();
 
     }
 
+    
+
     public static void mostrarPersona(Persona p) {
-        System.out.println("Persona recibida" + p.toString());
+        System.out.println("Persona recibida" + p);
     }
 
     public static Persona crearPersona() {
         return new Quimico("Carlos", "c01", "F");
     }
 
+
     // PUNTO 3: ATRIBUTO FINAL aplicado en la clase Persona: private final String id
     // METODO FINAL aplicado en Persona: public final void mostrarTipo()
     // CLASE FINAL aplicada en Robot: public final class Robot
+
+    
+    
 }

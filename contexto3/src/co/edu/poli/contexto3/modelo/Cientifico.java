@@ -36,7 +36,18 @@ public class Cientifico extends Persona {
                 '}';
     }
 
+    @Override
     public int operacion(int i) {
         return i * 2;
     }
+
+    @Override
+    public int sueldoSinPasaje() {
+        int sueldo = 2000000;
+        int pasaje = 180000;
+        int resultado = sueldo - pasaje; 
+        return resultado;
+    }
+    
+    
 }
