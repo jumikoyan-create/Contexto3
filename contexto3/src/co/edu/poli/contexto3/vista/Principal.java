@@ -1,5 +1,6 @@
 package co.edu.poli.contexto3.vista;
-
+import java.util.Scanner;
+import co.edu.poli.contexto3.modelo.Persona;
 import co.edu.poli.contexto3.modelo.*;
 import co.edu.poli.contexto3.servicios.ImplementacionOperacionCRUD;
 import co.edu.poli.contexto3.servicios.Quimico;
@@ -79,6 +80,103 @@ System.out.println("Buscar C01 eliminado: " + crud.leer("C01"));
 
 // LISTADO FINAL
 crud.listar();
+
+Scanner sc = new Scanner(System.in);
+int opcion; 
+
+do { 
+	System.out.println("\n------ MENU -----");
+	System.out.println("1. CREAR");
+	System.out.println("2. LISTAR");
+	System.out.println("3. ACTUALIZAR");
+	System.out.println("4. ELIMINAR");
+	System.out.println("5. BUSCAR");
+	System.out.println("6. GUARDAR (serializar)");
+	System.out.println("7. CARGAR (Deserializar)");
+	System.out.println("8. SALIR");
+	System.out.println("Opcion: ");
+	
+	opcion = sc.nextInt();
+	sc.nextLine();
+	
+	switch(opcion){
+		case 1: {
+			System.out.print("ID: ");
+			String id = sc.nextLine();
+			
+			System.out.print("Nombre: ");
+			String nombre = sc.nextLine();
+			
+			System.out.println("sexo:(M/F) ");
+			String sexo = sc.nextLine();
+			
+			crud.crear(new Cientifico(nombre, id, sexo));
+			
+			break;
+		}
+			
+		case 2: crud.listar();
+		
+		case 3: {
+			System.out.print("Id a actualizar: ");
+			String id = sc.nextLine();
+			
+			System.out.println("Nuevo nombre: ");
+			String nombre = sc.nextLine();
+			
+			System.out.println("Nuevo genero: (M/F)");
+			String sexo = sc.nextLine();
+			
+			crud.actualizar(id,  new Cientifico(nombre, id, sexo));
+			
+			break;
+		}
+		
+		case 4: {
+			System.out.print("ID a eliminar: ");
+			String id = sc.nextLine();
+			crud.eliminar(id);
+			
+			break;
+		}
+		
+		case 5 : {
+			System.out.print("ID  a buscar: ");
+			String id = sc.nextLine();
+			System.out.print(crud.leer(id));
+			
+			break;
+		}
+		
+		case 6: {
+			System.out.println(
+					crud.serializar(null, "", "personas.dat" )
+					);
+			break;
+		}
+		
+		case 7: { 
+			Persona [] datos = crud.deserializar("", "personas.dat");
+			
+			if(datos != null) {
+				crud.setPersonas(datos);
+				System.out.println("datos cargados completamente");
+			}
+			
+			break;
+		}
+		
+		case 8: 
+			System.out.println("saliendo...");
+			break;
+		
+		default:
+			System.out.println("opcion invalida");
+			break;
+	}
+	
+} while (opcion !=8);
+sc.close();
 
     }
 

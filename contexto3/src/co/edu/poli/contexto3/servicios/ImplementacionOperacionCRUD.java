@@ -1,6 +1,11 @@
 package co.edu.poli.contexto3.servicios;
 import co.edu.poli.contexto3.modelo.Persona;
-public class ImplementacionOperacionCRUD implements OperacionCRUD {
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.*;
+public class ImplementacionOperacionCRUD implements OperacionCRUD, OperacionArchivo {
 
     private Persona[] personaa = new Persona[2];
 
@@ -89,6 +94,38 @@ public class ImplementacionOperacionCRUD implements OperacionCRUD {
         }
     }
 }
-}
+    @Override
+    public String serializar(Persona [] personas, String path, String name) {
+    	try (java.io.FileOutputStream fos = new java.io.FileOutputStream(path + name);
+    			java.io.ObjectOutputStream oos = new java.io.ObjectOutputStream(fos)) { 
+    		oos.writeObject(personas);
+    		return "Archivo creado correctamente";
+    	}catch(java.io.IOException e) {
+    		return "error al guardar: " + e.getMessage();
+    	}
+    }
+    
+    @Override
+    public Persona[] deserializar(String path, String name) {
+    	Persona [] personas = null;
+    	try(java.io.FileInputStream fis = new java.io.FileInputStream(path + name);
+    			java.io.ObjectInputStream ois = new java.io.ObjectInputStream(fis)) {
+    		personas = (Persona[]) ois.readObject();
+    	} catch (java.io.IOException e) {
+    		System.out.println("Error IO: " + e.getMessage());
+    	}catch (ClassNotFoundException e) {
+    		System.out.println("clase no encontrada : " + e.getMessage());
+    	}
+    	return personas;
+    	}
+    
+    public void setPersonas(Persona[]personas) {
+    	this.personaa = personas;
+    }
+    }
+    
+    		
+    		
+
 
 

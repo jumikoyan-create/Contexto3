@@ -31,8 +31,10 @@ public class Cientifico extends Persona {
     @Override
     public String toString() {
         return "Cientifico{" +
-                "experiencia='" + experiencia + '\'' +
-                ", sueldo=" + sueldo +
+               "nombre='" + getNombre()+ '\'' +
+               ", id='" + getId() + '\''+
+               "experiencia='" + experiencia + '\'' +
+               ", sueldo=" + sueldo +
                 '}';
     }
 

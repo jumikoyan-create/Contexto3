@@ -45,7 +45,9 @@ public class Quimico extends Cientifico {
 
     @Override
     public String toString() {
-        return "Quimico{" +
+        return super.toString()+"Quimico{" +
+                "nombre='" + getNombre() + '\'' +
+                ", id='" + getId() + '\''+
                 "especializacion='" + especializacion + '\'' +
                 ", sexo='" + sexo + '\'' +
                 ", uniforme='" + uniforme + '\'' +

@@ -22,6 +22,7 @@ public class Astronauta extends Persona {
     @Override
     public String toString() {
         return "Astronauta{" +
+    
                 "fechadenacimiento='" + fechadenacimiento + '\'' +
                 '}';
     }
