@@ -1,10 +1,9 @@
 package co.edu.poli.contexto3.vista;
 
-import java.util.Scanner;
-
 import co.edu.poli.contexto3.modelo.*;
 import co.edu.poli.contexto3.servicios.ImplementacionOperacionCRUD;
 import co.edu.poli.contexto3.servicios.Quimico;
+import java.util.Scanner;
 
 public class Principal {
 	public static void main(String[] args) {
@@ -52,7 +51,7 @@ public class Principal {
 
 			}
 		}
-		mostrarPersona(new Cientifico("Maria", "C03", "f"));
+		//mostrarPersona(new Cientifico("Maria", "C03", "f"));
 		Persona nueva = crearPersona();
 		// System.out.println("Persona creada; " + nueva);
 

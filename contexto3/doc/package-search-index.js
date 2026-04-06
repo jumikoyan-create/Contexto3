@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"co.edu.poli.contexto3.modelo"},{"l":"co.edu.poli.contexto3.servicios"},{"l":"co.edu.poli.contexto3.vista"}];updateSearchResults();
