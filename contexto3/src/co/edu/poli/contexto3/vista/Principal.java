@@ -1,6 +1,6 @@
 package co.edu.poli.contexto3.vista;
 import java.util.Scanner;
-import co.edu.poli.contexto3.modelo.Persona;
+
 import co.edu.poli.contexto3.modelo.*;
 import co.edu.poli.contexto3.servicios.ImplementacionOperacionCRUD;
 import co.edu.poli.contexto3.servicios.Quimico;
@@ -46,42 +46,42 @@ public class Principal {
         personaa[4] = new Quimico("Luis", "Q01", "M");
         for (Persona p : personaa) {
             if (p != null) {
-                System.out.println(p.toString());
-                System.out.println("Resultado operacion: " + p.operacion(10));
+              //  System.out.println(p.toString());
+               // System.out.println("Resultado operacion: " + p.operacion(10));
 
             }
         }
         mostrarPersona(new Cientifico("Maria", "C03", "f"));
         Persona nueva = crearPersona();
-        System.out.println("Persona creada; " + nueva);
+      //  System.out.println("Persona creada; " + nueva);
  
-System.out.println("\n------ PRUEBA CRUD ------");
+//System.out.println("\n------ PRUEBA CRUD ------");
 
-ImplementacionOperacionCRUD crud = new ImplementacionOperacionCRUD();
+//ImplementacionOperacionCRUD crud = new ImplementacionOperacionCRUD();
 
 // CREAR
-crud.crear(new Cientifico("Carlos", "C01", "M"));
-crud.crear(new Quimico("Ana", "Q01", "F"));
-crud.crear(new Cientifico("Maria", "C02", "F")); // crecimiento
+//crud.crear(new Cientifico("Carlos", "C01", "M"));
+//crud.crear(new Quimico("Ana", "Q01", "F"));
+//crud.crear(new Cientifico("Maria", "C02", "F")); // crecimiento
 
 // LISTAR
-crud.listar();
+//crud.listar();//
 
 // LEER
-System.out.println("Buscar C01: " + crud.leer("C01"));
+//System.out.println("Buscar C01: " + crud.leer("C01"));
 
 // ACTUALIZAR
-crud.actualizar("Q01", new Cientifico("Pedro", "Q01", "M"));
-System.out.println("Buscar Q01 actualizado: " + crud.leer("Q01"));
+//crud.actualizar("Q01", new Cientifico("Pedro", "Q01", "M"));
+//System.out.println("Buscar Q01 actualizado: " + crud.leer("Q01"));
 
 // ELIMINAR
-crud.eliminar("C01");
-System.out.println("Buscar C01 eliminado: " + crud.leer("C01"));
+//crud.eliminar("C01");
+//System.out.println("Buscar C01 eliminado: " + crud.leer("C01"));
 
 // LISTADO FINAL
-crud.listar();
-
+//crud.listar();
 Scanner sc = new Scanner(System.in);
+ImplementacionOperacionCRUD crud = new ImplementacionOperacionCRUD();
 int opcion; 
 
 do { 
@@ -116,6 +116,7 @@ do {
 		}
 			
 		case 2: crud.listar();
+		break;
 		
 		case 3: {
 			System.out.print("Id a actualizar: ");
@@ -150,18 +151,17 @@ do {
 		
 		case 6: {
 			System.out.println(
-					crud.serializar(null, "", "personas.dat" )
-					);
+					crud.serializar(crud.getPersonas(), "", "personas.dat"));
 			break;
 		}
 		
 		case 7: { 
-			Persona [] datos = crud.deserializar("", "personas.dat");
-			
-			if(datos != null) {
-				crud.setPersonas(datos);
-				System.out.println("datos cargados completamente");
-			}
+			Persona[] datos = crud.deserializar("", "personas.dat");
+
+        if (datos != null) {
+                crud.setPersonas(datos);
+            System.out.println("datos cargados completamente");
+}
 			
 			break;
 		}
