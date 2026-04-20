@@ -8,7 +8,9 @@ import co.edu.poli.contexto3.modelo.*;
  */
 public class Quimico extends Cientifico {
 
-    /**
+    private static final long serialVersionUID = 1L;
+
+	/**
      * Especialización del químico.
      */
     private String especializacion;
